@@ -2,6 +2,7 @@ import string
 
 
 class Constants:
+    MODEL_NAMES = {1: "Unigram", 2: "Bigram", 3: "Trigram", 4: "Quadrigram"}
     CONFIG_FILE_NAME = ".config"
     CONFIG_PATH = "../data/"
     OUTPUT_PATH = "../data/out"
