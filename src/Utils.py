@@ -10,3 +10,7 @@ class Utils:
         for idx, c in enumerate(character_set):
             ret[c] = Utils.make_empty_gram(size - 1, character_set)
         return ret
+
+    @staticmethod
+    def format_gram_to_joint_probability(param):
+        return param

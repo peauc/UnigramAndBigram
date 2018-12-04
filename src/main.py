@@ -13,10 +13,11 @@ def main():
     gram2 = NGram(1, 'ab')
     gram2.train("aaabbb", "francais")
     predic = Predictor([gram, gram2])
-    sentence = "hdfasjkdfhslajkfhdskljf hsdfjlkhsfljkhsajhafjlsahfsjaldfhsadfhsajfhsdfsdhafajksdlhf"
+    sentence = "aabb"
     prediction = predic.predict_this_sentence(sentence)
-    output = OutputHelper(prediction, sentence)
-    output.print_and_save_output()
+    with open("test.output", 'w') as f:
+        output = OutputHelper(prediction, sentence, f)
+        output.print_and_save_output()
     a = 0
 
 if __name__ == '__main__':

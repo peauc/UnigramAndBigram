@@ -1,5 +1,5 @@
 import string
-from src.NGramUtils import Utils
+from src.Utils import Utils
 
 class NGram:
     def __init__(self, size, character_set):
