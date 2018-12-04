@@ -11,7 +11,7 @@ class ConfigurationHandler:
         self.__loaded = False
         self.__languages = []
 
-    #region Properties
+    # region Properties
     @property
     def languages(self):
         return self.__languages
@@ -27,7 +27,8 @@ class ConfigurationHandler:
     @configuration_file.setter
     def configuration_file(self, new_file):
         self.__configuration_file = new_file
-#endregion
+
+    # endregion
 
     # This method read the file set as self.__configuration_file and return the path of the training set to read
     def get_langages_folder_absolute_path(self):

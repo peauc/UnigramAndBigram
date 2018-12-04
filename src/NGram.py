@@ -39,7 +39,12 @@ class NGram:
             self._feed_grams(self.__gram, g)
 
     def predict(self, ngram):
-        return ngram, 0
+        letter_count = self.__gram
+
+        for c in ngram:
+            letter_count = letter_count[c]
+
+        return ngram, letter_count / self.__total_number_of_grams
 
     def _feed_grams(self, gram, g):
         if len(g) == 1:

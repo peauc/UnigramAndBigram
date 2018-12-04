@@ -22,7 +22,7 @@ class TrainingSetHandler:
     @property
     def is_training_set_loaded(self):
         return self.__is_training_set_loaded
-#endregion
+    #endregion
 
     def _read_configuration_file(self, configuration_file=None):
         if configuration_file is not None:

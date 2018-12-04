@@ -1,6 +1,8 @@
 from src.Constants import Constants
 from src.Utils import Utils
 
+from cmath import log
+
 class OutputHelper:
 
     def __init__(self, predictions, sentence, file):
@@ -37,7 +39,9 @@ class OutputHelper:
         return True
 
     def __update_score_for_language(self, language, score):
-        self.__scores[language] = self.__scores.get(language, 0) + score[1]
+        print("scores: ", self.__scores)
+        print("score:", score[1])
+        self.__scores[language] = self.__scores.get(language, 0) + log10(score[1])
         return self.__scores[language]
 
     def __track_and_print_probabilities(self, n, values_by_language):
