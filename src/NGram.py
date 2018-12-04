@@ -9,7 +9,7 @@ class NGram:
         self.__gram = self.__make_empty_gram(self.size, character_set, delta)
         self.__language = ""
 
-#region Properties
+    #region Properties
     @property
     def language(self):
         return self.__language

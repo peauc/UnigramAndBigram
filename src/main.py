@@ -8,9 +8,9 @@ import string
 def main():
     training_set = TrainingSetHandler()
     training_set.load_training_set()
-    gram = NGram(2, 'ab', 0.5)
+    gram = NGram(3, 'ab', 0.5)
     gram.train("aaabbb", "gibberish")
-    gram2 = NGram(2, 'ab', 0.5)
+    gram2 = NGram(3, 'ab', 0.5)
     gram2.train("aaabbb", "francais")
     predic = Predictor([gram, gram2])
     sentence = "aabb"
