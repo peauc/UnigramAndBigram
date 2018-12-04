@@ -1,4 +1,4 @@
-from src.Constants import Constants
+from Constants import Constants
 
 
 class TestSetHandler:

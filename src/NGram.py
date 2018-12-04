@@ -1,5 +1,5 @@
 import string
-from src.Utils import Utils
+from Utils import Utils
 
 
 class NGram:

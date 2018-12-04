@@ -1,11 +1,11 @@
-from src.NGram import NGram
-from src.TrainingSetHandler import TrainingSetHandler
-from src.Predictor import Predictor
-from src.OutputHelper import OutputHelper
-from src.Constants import Constants
-from src.TestSet import TestSetHandler
-from src.ConfigurationHandler import ConfigurationHandler
-from src.Utils import Utils
+from NGram import NGram
+from TrainingSetHandler import TrainingSetHandler
+from Predictor import Predictor
+from OutputHelper import OutputHelper
+from Constants import Constants
+from TestSet import TestSetHandler
+from ConfigurationHandler import ConfigurationHandler
+from Utils import Utils
 import string
 import os
 import math

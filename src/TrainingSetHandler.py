@@ -1,5 +1,5 @@
-from src.ConfigurationHandler import ConfigurationHandler
-from src.Constants import Constants
+from ConfigurationHandler import ConfigurationHandler
+from Constants import Constants
 import os
 
 # By default this class load the default configuration file
