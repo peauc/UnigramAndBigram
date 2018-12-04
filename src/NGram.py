@@ -15,6 +15,10 @@ class NGram:
         return self.__language
 
     @property
+    def gram(self):
+        return self.__gram
+
+    @property
     def total_number_of_grams(self):
         return self.__total_number_of_grams
 
@@ -36,7 +40,8 @@ class NGram:
         training_corpus = [c for c in training_corpus.lower() if c.isalpha()]
         grams = [training_corpus[i:i+self.size] for i in range(len(training_corpus)-self.size+1)]
         for g in grams:
-            self._feed_grams(self.__gram, g)
+            if g[0] in string.ascii_letters:
+                self._feed_grams(self.__gram, g)
 
     def predict(self, ngram):
         letter_count = self.__gram

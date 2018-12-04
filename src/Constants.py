@@ -10,7 +10,7 @@ class Constants:
     VALID_TRAINING_FILE_EXTENTION = (".txt", "")
     CHARACTER_SET = string.ascii_lowercase
     # This array defines the deepness of ngram
-    SIZE_OF_GRAMS = [1]
+    SIZE_OF_GRAMS = [2]
     TEST_FILE_RELATIVE_FILENAME = "../data/test/first10TestSentences.txt"
     LANGUAGE_TABLE = {'french': 'fr',
                       'english': 'en'}

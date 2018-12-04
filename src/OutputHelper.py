@@ -2,9 +2,15 @@ from src.Constants import Constants
 from src.Utils import Utils
 
 from cmath import log10
+import operator
 
 class OutputHelper:
 
+    #region Properties
+    @property
+    def scores(self):
+        return self.__scores
+#endregion
     def __init__(self, predictions, sentence, file):
         self.__reset(predictions, sentence, file)
 
@@ -15,14 +21,8 @@ class OutputHelper:
         self.__sentence = sentence
         self.__scores = {}
 
-    def __get_model_name(self, size):
-        if size in Constants.MODEL_NAMES:
-            return Constants.MODEL_NAMES[size]
-        else:
-            return "{}Gram".format(size)
-
     def __print_title(self, n, sentence):
-        model = "{} Model:".format(self.__get_model_name(n).upper())
+        model = "{} Model:".format(Utils.get_model_name(n).upper())
         print(sentence[1])
         print(model)
         self.__file.write(sentence[1] + '\n')
@@ -39,7 +39,7 @@ class OutputHelper:
         return True
 
     def __update_score_for_language(self, language, score):
-        self.__scores[language] = self.__scores.get(language, 0) + log10(score[1])
+        self.__scores[language] = self.__scores.get(language, 0) + log10(score[1]).real
         return self.__scores[language]
 
     def __track_and_print_probabilities(self, n, values_by_language):
@@ -62,9 +62,9 @@ class OutputHelper:
 
 
     def __print_footer(self, n, language):
-        winner = self.__find_winner(language)
-        print("According to the {} model, this sentence is in {}".format(self.__get_model_name(n), winner))
-        self.__file.write("According to the {} model, this sentence is in {}\n".format(self.__get_model_name(n), winner))
+        winner = self.__find_winner()
+        print("According to the {} model, this sentence is in {}".format(Utils.get_model_name(n), winner))
+        self.__file.write("According to the {} model, this sentence is in {}\n".format(Utils.get_model_name(n), winner))
         pass
 
     def print_and_save_output(self):
@@ -73,8 +73,9 @@ class OutputHelper:
             self.__track_and_print_probabilities(n, language)
             self.__print_footer(n, language)
 
-    def __find_winner(self, language):
-        return max(zip(language.values(), language.keys()))[1].capitalize()
+    def __find_winner(self):
+        max_value = max(self.scores.items(), key=operator.itemgetter(1))[0]
+        return max_value.capitalize()
 
 
 
