@@ -1,7 +1,7 @@
 from src.Constants import Constants
 from src.Utils import Utils
 
-from cmath import log
+from cmath import log10
 
 class OutputHelper:
 
@@ -23,10 +23,10 @@ class OutputHelper:
 
     def __print_title(self, n, sentence):
         model = "{} Model:".format(self.__get_model_name(n).upper())
-        print(sentence)
+        print(sentence[1])
         print(model)
-        self.__file.write(sentence)
-        self.__file.write(model)
+        self.__file.write(sentence[1] + '\n')
+        self.__file.write(model + '\n')
 
     def __should_print(self, values_array):
         tester = ""
@@ -39,8 +39,6 @@ class OutputHelper:
         return True
 
     def __update_score_for_language(self, language, score):
-        print("scores: ", self.__scores)
-        print("score:", score[1])
         self.__scores[language] = self.__scores.get(language, 0) + log10(score[1])
         return self.__scores[language]
 
@@ -52,18 +50,21 @@ class OutputHelper:
                 total_score = self.__update_score_for_language(language, results[0])
                 self.__print_lines(language, results[0], total_score)
                 self.__lines_printed += 1
+            #Print newline
+            print("")
+            self.__file.write('\n')
 
     def __print_lines(self, language, unigramProbability, total_score):
         print("{}: P({}) = {}  ==> log prob of this sentence so far: {}".
               format(language.upper(), Utils.format_gram_to_joint_probability(unigramProbability[0]), unigramProbability[1], total_score))
-        self.__file.write("{}: P({}) = {}  ==> log prob of this sentence so far: {}".
+        self.__file.write("{}: P({}) = {}  ==> log prob of this sentence so far: {}\n".
               format(language.upper(), Utils.format_gram_to_joint_probability(unigramProbability[0]), unigramProbability[1], total_score))
 
 
     def __print_footer(self, n, language):
         winner = self.__find_winner(language)
         print("According to the {} model, this sentence is in {}".format(self.__get_model_name(n), winner))
-        self.__file.write("According to the {} model, this sentence is in {}".format(self.__get_model_name(n), winner))
+        self.__file.write("According to the {} model, this sentence is in {}\n".format(self.__get_model_name(n), winner))
         pass
 
     def print_and_save_output(self):

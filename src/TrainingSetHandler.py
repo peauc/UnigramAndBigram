@@ -34,7 +34,8 @@ class TrainingSetHandler:
         for file in os.listdir(folder_path):
             if file.endswith(Constants.VALID_TRAINING_FILE_EXTENTION):
                 with open(os.path.join(folder_path, file), "r") as f:
-                    lines += f.read()
+                    text = f.read()
+                    lines += text
         return lines
 
     def _load_data(self):
