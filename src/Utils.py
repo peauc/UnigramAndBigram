@@ -2,10 +2,12 @@ from src.Constants import Constants
 
 
 class Utils:
-    #TODO: THIS
     @staticmethod
     def format_gram_to_joint_probability(param):
-        return param.replace("", "|")[1:-1]
+        splitter = ""
+        if len(param) != 1:
+            splitter = "|"
+        return param[:1] + splitter + param[1:]
 
     @staticmethod
     def get_model_name(size):
